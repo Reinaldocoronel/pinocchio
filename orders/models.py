@@ -13,11 +13,11 @@ class Items(models.Model):
 
 class Prices(models.Model):
 	price = models.FloatField()
-	tipe  = models.CharField(max_length=4)
+	size  = models.CharField(max_length=4)
 	item  = models.ForeignKey(Items, on_delete=models.CASCADE)
 
 	def __str__(self):
 		return f"{self.price:.2f}$"
 
-	class meta:
-		unique_together = ('item', 'tipe',)
+	class Meta:
+		unique_together = ['item', 'size']
