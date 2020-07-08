@@ -1,4 +1,8 @@
 from django.test import TestCase, Client
+from django.core import serializers
+from selenium import webdriver
+
+import json
 
 from .models import Items
 # Create your tests here.
@@ -34,3 +38,19 @@ class ModelsTestCase(TestCase):
 		response = c.get("/")
 		self.assertEqual(response.status_code, 200)
 		self.assertEqual(len(response.context["categories"]), 2)
+
+	def test_api(self):
+		m3 = Items.objects.create(name="3 topings", category="regular", price=16.20, price_l=25.95, extras=3)
+		c = Client()
+		response = c.get("/API/regular")
+		data = response.content
+		parse = json.loads(data)
+		self.assertEqual(response.status_code, 200)
+		self.assertEqual(parse[0]['name'], '2 topings')
+
+	def test_menu_main(self):
+		driver = webdriver.Chrome()
+		driver.get('http://127.0.0.1:8000/')
+		categories = driver.find_elements_by_class_name('category__button')
+		print(categories)
+		pass

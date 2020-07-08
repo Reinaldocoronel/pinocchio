@@ -1,37 +1,66 @@
 {% extends "base.html" %}
+{% load static %}
 {% block tittle %}
 	Menu
 {% endblock %}
+{% block templates %}
+	<script id="selection__main" type="text/x-handlebars-template">{% verbatim %}
+		{{#each items}}
+			<form class='selection__form'>
+				<button data-index="{{@index}}" data-name="{{ this.name }}" aria-describedby="{{ this.name }}" class="meal__button"> {{ this.name }} </button>
+				<small id="{{ this.name}}"> From: ${{ this.price }}</small>
+			</form>
+		{{/each}}
+	{% endverbatim %}</script>
+	<script id="selection__specific__menu" type="text/x-handlebars-template">{% verbatim %}
+		{{#check price_l }}
+		<button data-size="small" aria-describedby="small" class="size__button"> small </button>
+		<small id="small"> ${{ this.price }}</small>
+		<button data-size="large" aria-describedby="large" class="size__button"> large </button>
+		<small id="large"> ${{ this.price_l }}</small>
+		{{else}}
+			{{#check extra}}
+				{{#times extra}}
+					<select>
+					{{#each toppings}}
+							{{#if available}}
+							<option vlaue="{{this.name}}">
+								{{this.name}}
+							</option>
+							{{else }}
+							<option class="disable" disabled vlaue="{{this.name}}">
+								{{this.name}}
+							</option>
+							{{/if}}
+					{{/each}}
+					</select>
+				{{/times}}
+				<button> add to cart</button>
+			{{/check }}
+		{{/check}}
+	{% endverbatim %}</script>
+{% endblock %}
+{% block static_ %}
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+	<script src="{% static 'orders/menu.js' %}"></script>
+{% endblock %}
 {% block body %}
 	<h1>Menu</h1>
-	<div class="wrapper">
-		{% for category in categories %}
-		<div class= "category">
-			<h1> {{category}} </h1>
-			<table style="width:100%">
-  			<tr>
-    			{% if categories.category.price_l %}
-    				<th colspan="2"></th>
-					<th>Small</th>
-    				<th>Large</th>
-    			{% else %}
-    				<th colspan="3"></th>
-    			 	<th> price </th>
-				{% endif %}
-  			</tr>
-  			{% for item in categories.category %}
-			<tr>
-				{% if item.price_l %}
-					<td colspan="2">{{item.name}}</td>
-					<td>{{item.price}}</td>
-					<td> {{item.price_l}} </td>
-				{% else %}
-					<td colspan="3">{{item.name}}</td>
-					<td>{{item.price}}</td>
-				{% endif %}
-			</tr>
+	<div class="cont">
+		<div class="cont__main">
+			{% for category in categories %}
+				<button data-category="{{ category }}" class="category__button">
+					<img src= "{% with 'orders/'|add:category|add:'.png' as image_static %}
+  						{% static image_static %}
+					{% endwith %}" width='60px' alt="{{ category }}"> 
+				</button>
 			{% endfor %}
 		</div>
-		{% endfor %}
+		<div id="cont__specific">
+
+		</div>
+		<div class="selection__specific">
+
+		</div>
 	</div>
 {% endblock %}

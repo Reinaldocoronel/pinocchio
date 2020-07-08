@@ -1,0 +1,39 @@
+name, category, extra, price, price_l
+Cheese,Regular,'',12.70, 17.95
+1 topping,Regular,1,13.70,19.95
+2 toppings,Regular,2,15.20,21.95
+3 toppings,Regular,3,16.20,23.95
+Special,Regular,'',17.75,25.95
+Cheese,Sicilian,'',24.45,38.70
+1 topping,Sicilian,1,26.45,40.70
+2 toppings,Sicilian,2,28.45,42.70
+3 toppings,Sicilian,3,29.45,44.70
+Special,Sicilian,'',30.45,45.70
+Cheese,Subs,1,6.50,7.95
+Italian,Subs,1,6.50,7.95
+Ham + Cheese,Subs,1,6.50,7.95
+Meatball,Subs,1,6.50,7.95
+Tuna,Subs,1,6.50,7.95
+Turkey,Subs,1,7.50,8.50
+Chicken Parmigiana,Subs,1,7.50,8.50
+Eggplant Parmigiana,Subs,1,6.50,7.95
+Steak,Subs,3,6.50,8.50
+Steak + Cheese,Subs,3,6.95,8.50
+'Sausage, Peppers & Onions',Subs,1,8.50,''
+Hamburger,Subs,1,4.60,6.95
+Cheeseburguer,Subs,1,5.10,7.45
+Fried Chicken,Subs,1,6.95,8.50
+Veggie,Subs,1,6.95,8.50
+Baked Ziti W/Mozzarella,Pasta,'',6.50,''
+Baked Ziti W/Meatballs,Pasta,'',8.75,''
+Baked Ziti W/Chicken,Pasta,'',9.75,''
+Garden Salad,Salads,'',6.25,''
+Greek Salad,Salads,'',8.25,''
+Antipasto,Salads,'',8.25,''
+Salad W/Tuna,'',8.25,''
+Garden Salad,Dinner,'',40.00,65.00
+Greek Salad,Dinner,'',50.00,75.00
+Antipasto,Dinner,'',50.00,75.00
+Baked Ziti,Dinner,'',40.00,65.00
+Meatball Parm,Dinner,'',50.00,75.00
+Chicken Parm,Dinner,'',55.00,85.00
